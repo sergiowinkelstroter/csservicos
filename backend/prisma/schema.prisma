@@ -1,0 +1,122 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id                Int        @id @default(autoincrement())
+  name              String
+  email             String     @unique
+  password          String?
+  googleId          String?
+  fone              String?
+  role              UserRole   @default(CLIENTE)
+  schedules         Schedule[] @relation("UserSchedules")
+  providedSchedules Schedule[] @relation("ProviderSchedules")
+  addresses         Address[]
+  notification      String     @default("I")
+
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+  Backups   Backups[]
+
+  @@map("users")
+}
+
+enum UserRole {
+  CLIENTE
+  PRESTADOR
+  ADMIN
+}
+
+model Schedule {
+  id          Int            @id @default(autoincrement())
+  userId      Int
+  user        User           @relation("UserSchedules", fields: [userId], references: [id])
+  serviceId   Int
+  service     Service        @relation(fields: [serviceId], references: [id])
+  title       String
+  description String?
+  date        DateTime
+  time        String
+  status      ScheduleStatus @default(A_CONFIRMAR)
+  addressId   Int?
+  address     Address?       @relation(fields: [addressId], references: [id])
+  providerId  Int?
+  provider    User?          @relation("ProviderSchedules", fields: [providerId], references: [id])
+  createdAt   DateTime       @default(now())
+  updatedAt   DateTime       @updatedAt
+
+  @@map("schedules")
+}
+
+enum ScheduleStatus {
+  A_CONFIRMAR
+  AGENDADO
+  EM_ANDAMENTO
+  CONCLUIDO
+  CANCELADO
+  PAUSADO
+}
+
+model Service {
+  id          Int             @id @default(autoincrement())
+  name        String
+  description String?
+  image       String
+  categoryId  Int
+  usageCount  Int             @default(0) @map("usage_count")
+  category    ServiceCategory @relation(fields: [categoryId], references: [id])
+  schedules   Schedule[]
+  createdAt   DateTime        @default(now())
+  updatedAt   DateTime        @updatedAt
+
+  @@map("services")
+}
+
+model ServiceCategory {
+  id        Int       @id @default(autoincrement())
+  name      String
+  services  Service[]
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+
+  @@map("service_categories")
+}
+
+model Address {
+  id        Int        @id @default(autoincrement())
+  userId    Int
+  user      User       @relation(fields: [userId], references: [id])
+  street    String
+  number    Int        @default(0)
+  city      String
+  state     String
+  zipCode   String
+  createdAt DateTime   @default(now())
+  updatedAt DateTime   @updatedAt
+  Schedule  Schedule[]
+
+  @@map("addresses")
+}
+
+model Backups {
+  id        Int      @id @default(autoincrement())
+  name      String
+  filename  String
+  createdAt DateTime @default(now()) @map(name: "created_at")
+  User      User?    @relation(fields: [userId], references: [id])
+  userId    Int?
+
+  @@map("backups")
+}
