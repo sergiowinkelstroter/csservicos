@@ -8,13 +8,16 @@ import router_login from "./routes/login";
 import router_backups from "./routes/backups";
 import path from "path";
 import cors from "cors";
+import dotenv from "dotenv";
+
+dotenv.config();
 
 const app: Application = express();
-const port = process.env.PORT || 3002;
+const port = process.env.PORT || 4002;
 
 app.use(
   cors({
-    origin: "http://localhost:3000",
+    origin: process.env.FRONTEND_URL || "http://localhost:3000",
     optionsSuccessStatus: 200,
   })
 );
