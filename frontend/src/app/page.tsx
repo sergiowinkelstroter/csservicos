@@ -31,6 +31,8 @@ import Maria from "/public/imagens/maria.jpg";
 import Carlos from "/public/imagens/carlos.jpg";
 import Ana from "/public/imagens/ana.jpg";
 import LogoHero from "/public/logo_login.png";
+import { api } from "@/lib/axios";
+import { Loading } from "@/components/Loading";
 
 const depoimentos = [
   {
@@ -56,13 +58,21 @@ const depoimentos = [
 export default function Home() {
   const [services, setServices] = useState<ServiceCategory[]>();
 
+  // useEffect(() => {
+  //   const fetchServices = async () => {
+  //     const response = await fetch(
+  //       `${process.env.API_URL}services/listByCategory`
+  //     );
+  //     const data = await response.json();
+  //     setServices(data);
+  //   };
+  //   fetchServices();
+  // }, []);
+
   useEffect(() => {
     const fetchServices = async () => {
-      const response = await fetch(
-        `${process.env.API_URL}services/listByCategory`
-      );
-      const data = await response.json();
-      setServices(data);
+      const response = await api.get("/services/listByCategory");
+      setServices(response.data);
     };
     fetchServices();
   }, []);
