@@ -59,7 +59,7 @@ export default function Home() {
   useEffect(() => {
     const fetchServices = async () => {
       const response = await fetch(
-        "http://localhost:3002/services/listByCategory"
+        `${process.env.API_URL}services/listByCategory`
       );
       const data = await response.json();
       setServices(data);
@@ -244,7 +244,7 @@ export default function Home() {
                           </CardHeader>
                           <CardContent className="flex flex-col gap-2">
                             <Image
-                              src={`http://localhost:3002/uploads/${service.image}`}
+                              src={`${process.env.API_URL}uploads/${service.image}`}
                               alt={service.name}
                               width={640}
                               height={480}
