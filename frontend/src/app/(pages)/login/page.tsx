@@ -115,7 +115,6 @@ export default function Login() {
                 variant={"outline"}
                 className="w-full"
                 disabled={isLoading}
-                asChild
                 onClick={() => navigate.push("/")}
               >
                 Voltar
