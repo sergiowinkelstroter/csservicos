@@ -225,7 +225,7 @@ export default function Home() {
           </div>
         </section>
 
-        <section id="servicos" className="py-16 ">
+        {/* <section id="servicos" className="py-16 ">
           <div className="container">
             <h3 className="text-2xl md:text-4xl font-bold  text-center mb-12">
               Nossos Serviços
@@ -273,7 +273,7 @@ export default function Home() {
               ))
             )}
           </div>
-        </section>
+        </section> */}
 
         <section id="cta-secundario" className="py-16  text-white">
           <div className="container text-center">
