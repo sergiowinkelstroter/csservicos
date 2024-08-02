@@ -223,15 +223,14 @@ export default function Home() {
             <h3 className="text-2xl md:text-4xl font-bold  text-center mb-12">
               Nossos Serviços
             </h3>
-            {services?.length === 0 && (
+            {services?.length === 0 ? (
               <div className="text-center">
                 <p className="text-2xl font-semibold">
                   Nenhum Serviço encontrado
                 </p>
               </div>
-            )}
-            {services &&
-              services.map((serviceC) => (
+            ) : (
+              services?.map((serviceC) => (
                 <div key={serviceC.name} className="flex flex-col gap-4">
                   {serviceC.services?.length !== 0 && (
                     <h3 className="text-2xl font-semibold">{serviceC.name}</h3>
@@ -264,7 +263,8 @@ export default function Home() {
                       ))}
                   </div>
                 </div>
-              ))}
+              ))
+            )}
           </div>
         </section>
 
