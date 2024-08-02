@@ -1,6 +1,8 @@
 # C&S Serviços
 
-![Logo](/frontend/public/logo.png)
+<p align="center">
+  <img src="/frontend/public/logo.png" alt="Logo">
+</p>
 
 C&S Serviços é um sistema de agendamento de serviços gerais projetado para facilitar a conexão entre clientes e prestadores de serviços através de uma plataforma intuitiva e eficiente. Nosso sistema oferece uma solução completa para gerenciamento de agendamentos, permitindo que os clientes agendem serviços diretamente com a empresa, enquanto a empresa gerencia a alocação dos prestadores e os detalhes dos serviços.
 
@@ -26,7 +28,7 @@ C&S Serviços é um sistema de agendamento de serviços gerais projetado para fa
 1. Clone o repositório:
 
    ```bash
-   git clone https://github.com/seu-usuario/cs-servicos.git
+   git clone https://github.com/seu-usuario/csservicos.git
    ```
 
 2. Instale as dependências:
