@@ -154,8 +154,9 @@ export const RegisterForm = () => {
               className="w-full"
               disabled={isLoading}
               asChild
+              onClick={() => navigate.push("/")}
             >
-              <Link href={"/"}>Voltar</Link>
+              Voltar
             </Button>
             <Button type="submit" className="w-full" disabled={isLoading}>
               {isLoading ? "Carregando..." : "Cadastrar"}
