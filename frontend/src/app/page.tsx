@@ -57,11 +57,18 @@ const depoimentos = [
 
 export default function Home() {
   const [services, setServices] = useState<ServiceCategory[]>();
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchServices = async () => {
-      const response = await api.get("/services/listByCategory");
-      setServices(response.data);
+      try {
+        const response = await api.get("/services/listByCategory");
+        setServices(response.data);
+      } catch (error) {
+        console.error("Erro ao buscar os serviços:", error);
+      } finally {
+        setLoading(false);
+      }
     };
     fetchServices();
   }, []);
@@ -223,11 +230,9 @@ export default function Home() {
             <h3 className="text-2xl md:text-4xl font-bold  text-center mb-12">
               Nossos Serviços
             </h3>
-            {services?.length === 0 ? (
-              <div className="text-center">
-                <p className="text-2xl font-semibold">
-                  Nenhum Serviço encontrado
-                </p>
+            {loading ? (
+              <div className="flex justify-center items-center h-full">
+                <Loading />
               </div>
             ) : (
               services?.map((serviceC) => (
@@ -239,25 +244,27 @@ export default function Home() {
                     {serviceC.services &&
                       serviceC.services.map((service) => (
                         <Card
-                          key={service.name}
-                          className="hover:scale-105 ease-in duration-300 hover:cursor-pointer bg-[#F97316] border-[#F97316] text-white"
+                          key={service.id}
+                          className="bg-[#15233E] border-[#F97316] text-white hover:scale-105 ease-in duration-300"
                         >
-                          <CardHeader>
-                            <CardTitle className="text-xl">
+                          <CardHeader className="flex justify-center">
+                            <div className="relative w-24 h-24 hover:shadow hover:shadow-white hover:rounded-lg hover:transition-shadow">
+                              <Image
+                                src={service.image}
+                                alt={service.name}
+                                layout="fill"
+                                objectFit="cover"
+                                className="rounded-lg"
+                              />
+                            </div>
+                          </CardHeader>
+                          <CardContent className="flex flex-col items-center gap-4 text-center">
+                            <CardTitle className="font-semibold text-sm md:text-lg">
                               {service.name}
                             </CardTitle>
-                          </CardHeader>
-                          <CardContent className="flex flex-col gap-2">
-                            <Image
-                              src={`${process.env.API_URL}uploads/${service.image}`}
-                              alt={service.name}
-                              width={640}
-                              height={480}
-                              className="rounded-lg"
-                            />
-                            <span className="text-sm text-white">
+                            <CardDescription className="text-sm">
                               {service.description}
-                            </span>
+                            </CardDescription>
                           </CardContent>
                         </Card>
                       ))}
