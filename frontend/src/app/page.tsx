@@ -58,17 +58,6 @@ const depoimentos = [
 export default function Home() {
   const [services, setServices] = useState<ServiceCategory[]>();
 
-  // useEffect(() => {
-  //   const fetchServices = async () => {
-  //     const response = await fetch(
-  //       `${process.env.API_URL}services/listByCategory`
-  //     );
-  //     const data = await response.json();
-  //     setServices(data);
-  //   };
-  //   fetchServices();
-  // }, []);
-
   useEffect(() => {
     const fetchServices = async () => {
       const response = await api.get("/services/listByCategory");
@@ -234,6 +223,13 @@ export default function Home() {
             <h3 className="text-2xl md:text-4xl font-bold  text-center mb-12">
               Nossos Serviços
             </h3>
+            {services?.length === 0 && (
+              <div className="text-center">
+                <p className="text-2xl font-semibold">
+                  Nenhum Serviço encontrado
+                </p>
+              </div>
+            )}
             {services &&
               services.map((serviceC) => (
                 <div key={serviceC.name} className="flex flex-col gap-4">
