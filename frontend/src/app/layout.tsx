@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import { Toaster } from "@/components/ui/toaster";
 import { Poppins } from "next/font/google";
 import "./globals.css";
 
@@ -18,10 +17,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pt-BR">
-      <body className={poppins.className}>
-        {children}
-        <Toaster />
-      </body>
+      <body className={poppins.className}>{children}</body>
     </html>
   );
 }

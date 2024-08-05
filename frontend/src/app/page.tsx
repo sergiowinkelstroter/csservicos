@@ -113,7 +113,7 @@ export default function Home() {
               Entrar
             </Button>
           </nav>
-          {/* <Sheet>
+          <Sheet>
             <SheetTrigger asChild className="md:hidden">
               <Button variant="ghost">
                 <Menu />
@@ -166,7 +166,7 @@ export default function Home() {
                 </Button>
               </div>
             </SheetContent>
-          </Sheet> */}
+          </Sheet>
         </div>
       </header>
       <main className="bg-[#15233E]">

@@ -1,4 +1,5 @@
 "use client";
+import { Toaster } from "@/components/ui/toaster";
 import { QueryClient, QueryClientProvider } from "react-query";
 
 const queryClient = new QueryClient();
@@ -11,7 +12,10 @@ export default function SectionLayout({
   return (
     <html lang="pt-BR">
       <QueryClientProvider client={queryClient}>
-        <body className="">{children}</body>
+        <body className="">
+          {children}
+          <Toaster />
+        </body>
       </QueryClientProvider>
     </html>
   );
