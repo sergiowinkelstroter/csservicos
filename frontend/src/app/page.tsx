@@ -75,7 +75,7 @@ export default function Home() {
 
   return (
     <div className="bg-[#15233E] text-white">
-      {/* <header className="bg-[#15233E] fixed z-50 inset-x-0 top-0 ">
+      <header className="bg-[#15233E] fixed z-50 inset-x-0 top-0 ">
         <div className="container flex py-4 justify-between items-center">
           <Link
             href="/#home"
@@ -84,7 +84,7 @@ export default function Home() {
             <Image
               src={Logo}
               alt="Logo"
-              layout="fill"
+              fill
               objectFit="contain"
               className="rounded-lg"
             />
@@ -92,16 +92,16 @@ export default function Home() {
           <nav className="md:flex gap-8 hidden">
             <ul className="flex gap-6 items-center justify-center">
               <li className="hover:underline">
-                <Link href="#sobre">Sobre</Link>
+                <a href="#sobre">Sobre</a>
               </li>
               <li className="hover:underline">
-                <Link href="#servicos">Serviços</Link>
+                <a href="#servicos">Serviços</a>
               </li>
               <li className="hover:underline">
-                <Link href="#depoimentos">Depoimentos</Link>
+                <a href="#depoimentos">Depoimentos</a>
               </li>
               <li className="hover:underline">
-                <Link href="#contato">Contatos</Link>
+                <a href="#contato">Contatos</a>
               </li>
             </ul>
             <Button asChild>
@@ -135,24 +135,24 @@ export default function Home() {
               <div className="flex flex-col gap-4 mt-8">
                 <ul className="flex flex-col gap-4 ">
                   <li className="hover:underline">
-                    <Link href="#sobre">
+                    <a href="#sobre">
                       <SheetClose>Sobre</SheetClose>
-                    </Link>
+                    </a>
                   </li>
                   <li className="hover:underline">
-                    <Link href="#servicos">
+                    <a href="#servicos">
                       <SheetClose>Serviços</SheetClose>
-                    </Link>
+                    </a>
                   </li>
                   <li className="hover:underline">
-                    <Link href="#depoimentos">
+                    <a href="#depoimentos">
                       <SheetClose>Depoimentos</SheetClose>
-                    </Link>
+                    </a>
                   </li>
                   <li className="hover:underline">
-                    <Link href="#contato">
+                    <a href="#contato">
                       <SheetClose>Contatos</SheetClose>
-                    </Link>
+                    </a>
                   </li>
                 </ul>
                 <Button asChild>
@@ -164,7 +164,7 @@ export default function Home() {
             </SheetContent>
           </Sheet>
         </div>
-      </header> */}
+      </header>
       <main className="bg-[#15233E]">
         <section
           id="home"
@@ -225,7 +225,7 @@ export default function Home() {
           </div>
         </section>
 
-        {/* <section id="servicos" className="py-16 ">
+        <section id="servicos" className="py-16 ">
           <div className="container">
             <h3 className="text-2xl md:text-4xl font-bold  text-center mb-12">
               Nossos Serviços
@@ -273,7 +273,7 @@ export default function Home() {
               ))
             )}
           </div>
-        </section> */}
+        </section>
 
         <section id="cta-secundario" className="py-16  text-white">
           <div className="container text-center">
