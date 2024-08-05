@@ -107,7 +107,6 @@ export default function Home() {
               </li>
             </ul>
             <Button
-              asChild
               className="text-white font-semibold bg-orage"
               onClick={() => navigate.push("/login")}
             >
@@ -160,7 +159,6 @@ export default function Home() {
                   </li>
                 </ul>
                 <Button
-                  asChild
                   className="text-white font-semibold bg-orage"
                   onClick={() => navigate.push("/login")}
                 >
