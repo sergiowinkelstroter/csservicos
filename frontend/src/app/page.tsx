@@ -79,7 +79,7 @@ export default function Home() {
     <div className="bg-[#15233E] text-white">
       <header className="bg-[#15233E] fixed z-50 inset-x-0 top-0 ">
         <div className="container flex py-4 justify-between items-center">
-          {/* <Link
+          <Link
             href="/#home"
             className="relative w-12 h-12 hover:shadow hover:shadow-white hover:rounded-lg hover:transition-shadow"
           >
@@ -90,7 +90,7 @@ export default function Home() {
               objectFit="contain"
               className="rounded-lg"
             />
-          </Link> */}
+          </Link>
           <nav className="md:flex gap-8 hidden">
             <ul className="flex gap-6 items-center justify-center">
               <li className="hover:underline">
@@ -113,7 +113,7 @@ export default function Home() {
               Entrar
             </Button>
           </nav>
-          <Sheet>
+          {/* <Sheet>
             <SheetTrigger asChild className="md:hidden">
               <Button variant="ghost">
                 <Menu />
@@ -166,7 +166,7 @@ export default function Home() {
                 </Button>
               </div>
             </SheetContent>
-          </Sheet>
+          </Sheet> */}
         </div>
       </header>
       <main className="bg-[#15233E]">
