@@ -75,7 +75,7 @@ export default function Home() {
 
   return (
     <div className="bg-[#15233E] text-white">
-      <header className="bg-[#15233E] fixed z-50 inset-x-0 top-0 ">
+      {/* <header className="bg-[#15233E] fixed z-50 inset-x-0 top-0 ">
         <div className="container flex py-4 justify-between items-center">
           <Link
             href="/#home"
@@ -164,7 +164,7 @@ export default function Home() {
             </SheetContent>
           </Sheet>
         </div>
-      </header>
+      </header> */}
       <main className="bg-[#15233E]">
         <section
           id="home"
