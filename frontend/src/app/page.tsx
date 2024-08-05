@@ -33,6 +33,7 @@ import Ana from "/public/imagens/ana.jpg";
 import LogoHero from "/public/logo_login.png";
 import { api } from "@/lib/axios";
 import { Loading } from "@/components/Loading";
+import { useRouter } from "next/navigation";
 
 const depoimentos = [
   {
@@ -58,6 +59,7 @@ const depoimentos = [
 export default function Home() {
   const [services, setServices] = useState<ServiceCategory[]>();
   const [loading, setLoading] = useState(true);
+  const navigate = useRouter();
 
   useEffect(() => {
     const fetchServices = async () => {
@@ -104,10 +106,12 @@ export default function Home() {
                 <a href="#contato">Contatos</a>
               </li>
             </ul>
-            <Button asChild>
-              <Link href="/login" className="text-white font-semibold bg-orage">
-                Entrar
-              </Link>
+            <Button
+              asChild
+              className="text-white font-semibold bg-orage"
+              onClick={() => navigate.push("/login")}
+            >
+              Entrar
             </Button>
           </nav>
           <Sheet>
@@ -155,10 +159,12 @@ export default function Home() {
                     </a>
                   </li>
                 </ul>
-                <Button asChild>
-                  <Link href="/login" className="bg-[#F97316] font-semibold">
-                    Entrar
-                  </Link>
+                <Button
+                  asChild
+                  className="text-white font-semibold bg-orage"
+                  onClick={() => navigate.push("/login")}
+                >
+                  Entrar
                 </Button>
               </div>
             </SheetContent>
