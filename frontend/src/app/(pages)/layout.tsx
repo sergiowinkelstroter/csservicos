@@ -10,13 +10,9 @@ export default function SectionLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="pt-BR">
-      <QueryClientProvider client={queryClient}>
-        <body className="">
-          {children}
-          <Toaster />
-        </body>
-      </QueryClientProvider>
-    </html>
+    <QueryClientProvider client={queryClient}>
+      {children}
+      <Toaster />
+    </QueryClientProvider>
   );
 }
